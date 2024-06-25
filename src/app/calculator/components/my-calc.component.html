@@ -1,0 +1,72 @@
+<div class="calculator">
+  <h2 id="heading">Calculator</h2>
+
+  <ng-container *ngFor="let group of calcGroups; let i = index">
+    <div class="calculator_container">
+      <input
+        type="number"
+        class="calculator_input"
+        [(ngModel)]="group.first.value"
+      />
+      <select class="calculator_select" [(ngModel)]="group.first.modifier">
+        <option
+          [value]="modifier.value"
+          *ngFor="let modifier of calcModifiers | keyvalue"
+        >
+          {{ modifier.value }}
+        </option>
+      </select>
+      <select class="calculator_select" [(ngModel)]="group.operation">
+        <option
+          [value]="operation.value"
+          *ngFor="let operation of calcOperations | keyvalue"
+        >
+          {{ operation.value }}
+        </option>
+      </select>
+      <select class="calculator_select" [(ngModel)]="group.second.modifier">
+        <option
+          [value]="modifier.value"
+          *ngFor="let modifier of calcModifiers | keyvalue"
+        >
+          {{ modifier.value }}
+        </option>
+      </select>
+      <input
+        type="number"
+        class="calculator_input"
+        [(ngModel)]="group.second.value"
+      />
+
+      <button (click)="removeGroup(i)">delete</button>
+    </div>
+
+    <select
+      class="calculator_select"
+      [(ngModel)]="operationsBetweenGroups[i]"
+      *ngIf="operationsBetweenGroups.length > i"
+    >
+      <option
+        [value]="operation.value"
+        *ngFor="let operation of calcOperations | keyvalue"
+      >
+        {{ operation.value }}
+      </option>
+    </select>
+  </ng-container>
+
+  <span class="calculator_result">{{
+    result !== undefined ? result : "Press calculate!"
+  }}</span>
+
+  <div class="calculator_history">
+    <span>Operations history</span>
+    <br />
+    <span *ngFor="let obj of history">{{ obj }} <br /> </span>
+  </div>
+
+  <div class="calculator_buttons">
+    <button class="calculator_button" (click)="calcGroup()">Calculate</button>
+    <button class="calculator_button" (click)="addGroup()">Add group</button>
+  </div>
+</div>
