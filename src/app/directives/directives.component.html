@@ -1,0 +1,25 @@
+<div
+  *ngFor="
+    let color of colors;
+    let i = index;
+    let first = first;
+    let last = last
+  "
+>
+  <span
+    >{{ i }}. {{ first ? "I`m first" : "" }} {{ last ? "I`m last" : ""
+    }}{{ color }}</span
+  >
+</div>
+
+@for (color of colors; track color; let i = $index; let first = $first; let last
+= $last) {
+<div>
+  <span
+    >{{ i }}. {{ first ? "I`m first" : "" }} {{ last ? "I`m last" : "" }}
+    {{ color }}</span
+  >
+</div>
+} @empty {
+<span> Empty array </span>
+}

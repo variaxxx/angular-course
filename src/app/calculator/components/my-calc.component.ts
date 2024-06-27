@@ -31,6 +31,7 @@ enum CalcModifiers {
   styleUrl: './my-calc.component.scss'
 })
 export class MyCalcComponent {
+
 	public calcOperations = CalcOperations;
 
 	public calcModifiers = CalcModifiers;

@@ -1,0 +1,16 @@
+.object {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 90%;
+
+    h3 {
+        font-size: 50px;
+    }
+
+    span {
+        font-size: 20px;
+    }
+}
