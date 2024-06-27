@@ -1,8 +1,16 @@
-<ul>
-  <li>
-    <a [routerLink]="['/calculator']" routerLinkActive="active">Calculator</a>
-  </li>
-  <li>
-    <a [routerLink]="['/object-list']" routerLinkActive="active">Object list</a>
-  </li>
-</ul>
+<div class="heading">
+  <button
+    [routerLink]="['/calculator']"
+    routerLinkActive="active"
+    class="heading_btn"
+  >
+    Calculator
+  </button>
+  <button
+    [routerLink]="['/object-list']"
+    routerLinkActive="active"
+    class="heading_btn"
+  >
+    Object list
+  </button>
+</div>
