@@ -1,0 +1,13 @@
+.directive {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 90%;
+	margin: 0 auto;
+	font-size: 20px;
+	
+	div {
+		width: 95%;
+		margin: 0 auto;
+	}
+}
