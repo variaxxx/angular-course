@@ -1,16 +1,16 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { MyDirectivesComponent } from './components/directives.component';
+import { ParentComponent } from './parent/parent.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: MyDirectivesComponent
-    },
+        component: ParentComponent
+    }
 ];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class MyDirectivesRoutingModule {}
+export class LifeCycleRoutingModule {}

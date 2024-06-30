@@ -9,7 +9,7 @@ import { MyObject, myObjects } from '../list/object-list.component';
 })
 export class MyObjectItemComponent implements OnInit {
 
-	public object?: MyObject
+	public object?: MyObject;
 
 	constructor(private route: ActivatedRoute) {}
 

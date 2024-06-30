@@ -1,0 +1,8 @@
+<div class="container"><h1>Post list works!</h1></div>
+
+@if (posts$ | async; as posts) { @for (post of posts; track post.id) {
+<div (click)="postPage(post.id)" class="post">
+  <span class="post__title">{{ post.title }}</span>
+  <span class="post__content">{{ post.body }}</span>
+</div>
+} }

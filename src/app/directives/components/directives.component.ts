@@ -17,4 +17,12 @@ export class MyDirectivesComponent {
 
     // ngSwitch
 
+    public currentColor: string = this.colors[0];
+
+    // ngStyle
+
+    public elementStyle: any = {
+        color: 'red',
+        "font-size": '50px'
+    }
 }

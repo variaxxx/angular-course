@@ -9,8 +9,8 @@
         let last = last
       "
       >{{ i }}. {{ first ? "I`m first" : "" }} {{ last ? "I`m last" : "" }}
-      {{ color }}</span
-    >
+      {{ color }} <br
+    /></span>
   </div>
 
   <h1>&#64;for</h1>
@@ -27,14 +27,58 @@
   }
 
   <h1>ngIf</h1>
-  <div *ngIf="isShow">
+  <div *ngIf="isShow; else emptyState">
     <span>{{ isShow }} => so, im printed</span>
   </div>
-  <button (click)="isShow = !isShow">{{ isShow ? "hide" : "show" }}</button>
   <h1>&#64;if</h1>
   @if (isShow) {
   <div>
     <span>{{ isShow }} => so, im printed</span>
   </div>
+  } @else {
+  <div>{{ isShow }}</div>
   }
+
+  <button (click)="isShow = !isShow">{{ isShow ? "hide" : "show" }}</button>
+
+  <h1>ngSwitch</h1>
+  <div [ngSwitch]="currentColor">
+    <span *ngSwitchCase="'red'"> Current color is red </span>
+    <span *ngSwitchCase="'blue'"> Blue is the current color </span>
+  </div>
+
+  <h1>&#64;switch</h1>
+  <div>
+    @switch (currentColor) { @case ('red') {
+    <span> Current color is red </span>
+    } @case ('blue') {
+    <span> Blue is the current color </span>
+    } }
+  </div>
+
+  <button
+    (click)="
+      currentColor == 'red' ? (currentColor = 'blue') : (currentColor = 'red')
+    "
+  >
+    Change color
+  </button>
+
+  <h1>ngStyle</h1>
+  <span [ngStyle]="elementStyle"> Im styled text </span>
+
+  <h1>ngClass</h1>
+  <span [ngClass]="isShow ? 'show' : ''"> Sample text </span>
+
+  <h1>Custom directives</h1>
+  <span [myChangeColor]="colors">Change color</span>
+
+  <span *myIf="isShow">MyIf</span>
+  <button (click)="isShow = !isShow">{{ isShow ? "hide" : "show" }}</button>
+
+  <span [myZoom]="50">MyZoom</span>
 </div>
+
+<ng-template #emptyState>
+  <div>{{ isShow }}</div>
+</ng-template>

@@ -11,13 +11,13 @@ import { MyEmptyPage } from './components/empty-route/empty-route.component';
 @NgModule({
   declarations: [
     AppComponent,
-	MyNavigation,
-	MyEmptyPage
+	  MyNavigation,
+	  MyEmptyPage
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-	MyCalcModule
+	  MyCalcModule
   ],
   providers: [],
   bootstrap: [AppComponent]
