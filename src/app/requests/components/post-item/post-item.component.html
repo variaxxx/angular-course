@@ -1,3 +1,17 @@
 @if (post) {
-<h1>{{ post.id }}</h1>
+<div class="post">
+  <button class="prev" [routerLink]="['/requests']">Back</button>
+  <h1>{{ post.title }}</h1>
+  <p>{{ post.body }}</p>
+</div>
+
+<div class="comments">
+  <h1>Comments</h1>
+  @for (comment of comments; track comment) {
+  <div class="comment">
+    <h4>{{ comment.name }} ( {{ comment.email }} )</h4>
+    <span>{{ comment.body }}</span>
+  </div>
+  }
+</div>
 }

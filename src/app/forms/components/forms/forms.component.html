@@ -1,0 +1,35 @@
+<div class="form" [formGroup]="myForm">
+  <h2>Form</h2>
+  <label for="login">Login</label>
+  <input type="text" id="login" formControlName="login">
+  @if (myForm.controls.login.invalid && myForm.controls.login.touched) {
+    <small style="color: red">This field is required</small>
+  }
+  <label for="email">Email</label>
+  <input type="text" id="email" formControlName="email">
+  @if (myForm.controls.email.invalid && myForm.controls.email.touched) {
+    <small style="color: red">This field is required</small>
+  }
+  <label for="password">Password</label>
+  <input type="text" id="password" formControlName="password">
+  @if (myForm.controls.password.invalid && myForm.controls.password.touched) {
+    <small style="color: red">This field is required</small>
+  }
+  <button (click)="handleValue()" [disabled]="myForm.invalid">Send data</button>
+</div>
+
+<div class="form" [formGroup]="validatorsForm">
+  <h2>Custom validators</h2>
+  <label for="mail">Login</label>
+  <input type="text" id="mail" formControlName="mail">
+  @if (validatorsForm.controls.mail.invalid && validatorsForm.controls.mail.touched) {
+    <small style="color: red">Wrong written data</small>
+  }
+  <label for="password_one">Password</label>
+  <input type="text" id="password_one" formControlName="password_one">
+  <label for="password_two">Repeat password</label>
+  <input type="text" id="password_two" formControlName="password_two">
+  @if (validatorsForm.errors?.['PasswordDoNotMatch'] && validatorsForm.controls.password_two.touched) {
+    <small style="color: red">Passwords do not match!</small>
+  }
+</div>

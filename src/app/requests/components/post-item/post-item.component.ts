@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Post, PostService } from '../../services/post.service';
-import { Observable } from 'rxjs';
+import { Post, PostService, Comment } from '../../services/post.service';
+import { Observable, switchMap, tap } from 'rxjs';
 import { map } from 'rxjs';
 
 @Component({
@@ -11,9 +11,9 @@ import { map } from 'rxjs';
 })
 export class PostItemComponent {
 
-    public post?: any;
+    public post?: Post;
 
-    public posts?: Observable<Post[]>;
+	public comments?: Comment[];
 
     constructor(
         private route: ActivatedRoute,
@@ -21,8 +21,19 @@ export class PostItemComponent {
     ) {}
 
     ngOnInit(): void {
-        this.route.params.subscribe((params: Params) => {
-            
-        })        
+        this.route.queryParams.pipe(
+			switchMap((data) => {
+				return this.postService.getPost(data["id"]).pipe(tap(data => {
+					this.post = data
+				}));
+			})
+		).subscribe()
+		this.route.queryParams.pipe(
+			switchMap((data) => {
+				return this.postService.getComments(data["id"]).pipe(tap(data => {
+					this.comments = data
+				}));
+			})
+		).subscribe()
     }
 }

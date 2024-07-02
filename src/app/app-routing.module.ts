@@ -31,8 +31,16 @@ const routes: Routes = [
 		path: 'requests',
 		loadChildren: () => import('./requests/requests.module').then((m) => m.RequestsModule)
 	},
+  {
+    path: 'pipes',
+    loadChildren: () => import('./pipes/pipes.module').then((m) => m.PipesModule)
+  },
+  {
+    path: 'forms',
+    loadChildren: () => import('./forms/forms.module').then((m) => m.FormsModule)
+  },
 	{
-		path: '', 
+		path: '',
 		redirectTo: 'calculator',
 		pathMatch: 'full',
 	},

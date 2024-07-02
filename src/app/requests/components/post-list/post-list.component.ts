@@ -23,6 +23,9 @@ export class PostListComponent implements OnInit{
     }
 
     public postPage(id: number): void {
-        this.router.navigate([`${id}`], {relativeTo: this.route})
+        this.router.navigate(['request'], {
+			relativeTo: this.route,
+			queryParams: {id}
+		})
     }
 }
