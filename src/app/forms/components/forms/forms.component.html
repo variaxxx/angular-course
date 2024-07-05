@@ -33,3 +33,47 @@
     <small style="color: red">Passwords do not match!</small>
   }
 </div>
+
+<form class="form" [formGroup]="fbForm" (ngSubmit)="onSubmit()">
+  <h2>Dynamic form</h2>
+  <label for="name">Name</label>
+  <input type="text" id="name" formControlName="name">
+
+  <div formArrayName="skills">
+    @for (skill of skills.controls; track skill; let i = $index) {
+
+      <div [formGroupName]="i">
+        <label [for]="i + 'skill'">{{ i + 1}} | Skill</label>
+        <input [id]="i + 'skill'" type="text" formControlName="skill">
+        <label [for]="i + 'experience'">Experience</label>
+        <input [id]="i + 'experience'" type="text" formControlName="experience">
+        <button (click)="removeSkill(i)">Delete</button>
+      </div>
+
+    }
+  </div>
+
+  <button (click)="addSkill()" type="button">Add skill</button>
+  <button type="submit">Submit</button>
+</form>
+
+<div class="form">
+  <h2>Template-Driven forms</h2>
+
+  <label for="templateLogin">Login</label>
+  <input type="text" id="templateLogin" [(ngModel)]="templateForm.login">
+
+  <label for="templateEmail">Email</label>
+  <input type="text" id="templateEmail" [(ngModel)]="templateForm.email">
+
+  <label for="templatePassword">Password</label>
+  <input type="password" id="templatePassword" [(ngModel)]="templateForm.password">
+</div>
+
+<div class="form" [formGroup]="customForm">
+  <h2>Custom control</h2>
+
+  <pre>{{ customForm.value | json }}</pre>
+
+  <app-rate formControlName="rate" [options]="rateOptions"></app-rate>
+</div>

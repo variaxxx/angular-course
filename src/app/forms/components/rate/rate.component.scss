@@ -1,0 +1,24 @@
+.rate {
+  &__wrapper {
+    display: flex;
+
+    gap: 10px;
+  }
+
+  &__text {
+    font-size: 22px;
+  }
+
+  &__item {
+    cursor: pointer;
+    font-size: 20px;
+    width: 25px;
+    height: 50px;
+    background-color: gray;
+    transition: ease-in-out .2s;
+  }
+
+  &__active {
+    background-color: green;
+  }
+}

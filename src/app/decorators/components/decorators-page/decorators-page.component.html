@@ -1,0 +1,31 @@
+<div class="block">
+  <h2>Ng-container & Ng-template</h2>
+
+  <ng-container *ngFor="let item of arr">
+    <span>{{ item }}</span>
+  </ng-container>
+
+  @for (item of arr; track $index) {
+    <span>{{ item }}</span>
+  }
+
+  <p>First</p>
+  <p *ngIf="isShow; else second">Second True</p>
+  <p>Third</p>
+
+  <ng-container
+    *ngTemplateOutlet="
+      second;
+      context: { $implicit: 'hello world!', someText: 'abc abc' }
+">
+    <span>sdkflsdkfk;sd</span>
+  </ng-container>
+
+  <button (click)="isShow=!isShow">{{ isShow ? 'Hide' : 'Show'}}</button>
+</div>
+
+<ng-template #second let-title let-someText='abc'>
+  <p>{{ someText }}</p>
+  <p>{{ title }}</p>
+  <p>Second False</p>
+</ng-template>

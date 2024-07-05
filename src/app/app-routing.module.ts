@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MyCalcComponent } from './calculator/components/my-calc.component';
 import { MyEmptyPage } from './components/empty-route/empty-route.component';
-import { MyObjectListComponent } from './object-list/components/list/object-list.component';
-import { MyDirectivesComponent } from './directives/components/directives.component';
 import { MyIOSCalculatorComponent } from './ios-calculator/components/ios-calculator.component';
 
 const routes: Routes = [
@@ -37,7 +35,11 @@ const routes: Routes = [
   },
   {
     path: 'forms',
-    loadChildren: () => import('./forms/forms.module').then((m) => m.FormsModule)
+    loadChildren: () => import('./forms/forms.module').then((m) => m.FormsUIModule)
+  },
+  {
+    path: 'decorators',
+    loadChildren: () => import('./decorators/decorators.module').then((m) => m.DecoratorsModule)
   },
 	{
 		path: '',
