@@ -16,16 +16,41 @@
   <ng-container
     *ngTemplateOutlet="
       second;
-      context: { $implicit: 'hello world!', someText: 'abc abc' }
+      context: { $implicit: 'hello world', abc: '123123'}
 ">
     <span>sdkflsdkfk;sd</span>
   </ng-container>
 
   <button (click)="isShow=!isShow">{{ isShow ? 'Hide' : 'Show'}}</button>
+
+  <ng-template #second let-title let-abc='abc'>
+    <p>{{ abc }}</p>
+    <p>{{ title }}</p>
+    <p>Second False</p>
+  </ng-template>
 </div>
 
-<ng-template #second let-title let-someText='abc'>
-  <p>{{ someText }}</p>
-  <p>{{ title }}</p>
-  <p>Second False</p>
-</ng-template>
+<div class="block">
+  <h2>ViewChild & ViewChildren</h2>
+  <p #paragraph>Lorem Ipsum</p>
+
+  <ng-template #paragraphTemplate>
+    <p>Ipsum Lorem</p>
+  </ng-template>
+
+  <ng-container *ngTemplateOutlet="paragraphTemplate"></ng-container>
+
+  <app-child-decorator #component></app-child-decorator>
+  <app-child-decorator #sec_component></app-child-decorator>
+</div>
+
+<div class="block">
+  <h2>Ng-content & ContentChild & ContentChildren</h2>
+  <app-child-decorator>
+    <app-child-decorator>
+      <p #content>Content works! 1</p>
+      <p #content2>Content works! 1</p>
+    </app-child-decorator>
+    <p>Content works! 2</p>
+  </app-child-decorator>
+</div>

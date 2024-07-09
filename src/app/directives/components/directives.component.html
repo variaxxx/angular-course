@@ -71,7 +71,7 @@
   <span [ngClass]="isShow ? 'show' : ''"> Sample text </span>
 
   <h1>Custom directives</h1>
-  <span [myChangeColor]="colors">Change color</span>
+  <span myChangeColor>Change color</span>
 
   <span *myIf="isShow">MyIf</span>
   <button (click)="isShow = !isShow">{{ isShow ? "hide" : "show" }}</button>
