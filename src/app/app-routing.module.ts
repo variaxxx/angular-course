@@ -3,11 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { MyCalcComponent } from './calculator/components/my-calc.component';
 import { MyEmptyPage } from './components/empty-route/empty-route.component';
 import { MyIOSCalculatorComponent } from './ios-calculator/components/ios-calculator.component';
+import {isLoggedGuardFn} from "./is-logged.guard";
+// import {isLoggedGuardService} from "./is-logged.guard";
 
 const routes: Routes = [
 	{
 		path: 'calculator',
 		component: MyCalcComponent,
+		canDeactivate: [
+			(component: MyCalcComponent) => component.canLeave
+		]
 	},
 	{
 		path: 'ios-calculator',
@@ -27,7 +32,9 @@ const routes: Routes = [
 	},
 	{
 		path: 'requests',
-		loadChildren: () => import('./requests/requests.module').then((m) => m.RequestsModule)
+		loadChildren: () => import('./requests/requests.module').then((m) => m.RequestsModule),
+		canActivate: [isLoggedGuardFn],
+		canActivateChild: [isLoggedGuardFn]
 	},
   {
     path: 'pipes',
@@ -41,6 +48,10 @@ const routes: Routes = [
     path: 'decorators',
     loadChildren: () => import('./decorators/decorators.module').then((m) => m.DecoratorsModule)
   },
+	{
+		path: 'styles',
+		loadChildren: () => import('./view-styles/view-styles.module').then((m) => m.ViewStylesModule)
+	},
 	{
 		path: '',
 		redirectTo: 'calculator',

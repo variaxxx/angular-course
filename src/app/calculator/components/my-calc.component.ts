@@ -32,6 +32,8 @@ enum CalcModifiers {
 })
 export class MyCalcComponent {
 
+	public canLeave: boolean = false;
+
 	public calcOperations = CalcOperations;
 
 	public calcModifiers = CalcModifiers;
